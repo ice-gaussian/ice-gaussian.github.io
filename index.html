@@ -1,0 +1,246 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ICE-G</title>
+<link href="./DreamBooth_files/style.css" rel="stylesheet">
+<script type="text/javascript" src="./DreamBooth_files/jquery.mlens-1.0.min.js"></script> 
+<script type="text/javascript" src="./DreamBooth_files/jquery.js"></script>
+<script type="text/javascript" src="./DreamBooth_files/video-comparison.js"></script>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+<!-- <script type="module" src="https://unpkg.com/@google/model-viewer@2.0.1/dist/model-viewer.min.js"></script> -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PWQ7C72CGK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PWQ7C72CGK');
+</script>
+
+<meta charset="utf-8">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> -->
+<meta name="viewport" content="width=1000; user-scalable=0;" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/Highlight-Clean.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+
+<link rel="apple-touch-icon" sizes="180x180" href="ice_icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="ice_icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="ice_icon.png">
+<link rel="icon" type="image/png" href="ice_icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:site_name" content="ICE-G: Image Conditional Editing of 3D Gaussian Splats"/>
+<meta property="og:type" content="video.other" />
+<meta property="og:title" content="ICE-G: Image Conditional Editing of 3D Gaussian Splats" />
+<meta property="og:description" content="ICE-G: Image Conditional Editing of 3D Gaussian Splats" />
+<meta property="og:url" content="https://ice-gaussian.github.io/" />
+
+<meta property="article:publisher" content="https://ice-gaussian.github.io/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ICE-G: Image Conditional Editing of 3D Gaussian Splats" />
+<meta name="twitter:description" content="We show color and texture editing using correspondences" />
+<meta name="twitter:url" content="https://ice-gaussian.github.io/" />
+    <!-- <meta name="twitter:site" content="" /> -->
+
+
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  #video-compare-container {
+	display: inline-block;
+	line-height: 0;
+	position: relative;
+	width: 100%;
+	padding-top: 42.3%;
+}
+#video-compare-container > video {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+#video-clipper {
+	width: 50%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+#video-clipper video {
+	width: 200%;
+	position: absolute;
+	height: 100%;
+}
+  .column {
+    float: left;
+    width: 20%;
+    padding: 5px;
+  }
+
+  .colum4 {
+    float: left;
+    width: 25%;
+    padding: 5px;
+  }
+
+  .colum2 {
+    float: left;
+    width: 50%;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  </style>
+ <style>
+  .grid {
+   display: flex;
+   flex-direction: row;
+   padding: 5px;
+   align-content: center;
+   /* flex-wrap: wrap; */
+  }
+  .grid > div {
+   flex-grow: 1;
+   flex-shrink: 1;
+   padding: 5px;
+   
+  }
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+html {
+  scroll-behavior: smooth;
+}
+  </style>
+</head>
+
+<body>
+<div class="content">
+  <h1 style="font-size: 36px;"><strong>ICE-G: Image Conditional Editing of 3D Gaussian Splats</strong></h1>
+  <br>
+  <!-- <img src="./iceg_files/teaser.png" class="teaser-gif" style="width:100%;" loop=infinite><br>
+   -->
+  <video style="width: 100%" autoplay muted loop>
+    <source src="./iceg_files/vids/tables.mp4" type="video/mp4"> 
+  </video><br>
+  <h3 style="font-size: 24px;"><em>Our method, ICE-G, allows for quick color or texture edits to a 3D scene given a single edit image.
+    Here we show the original image (top left), texturing the table with stone (top right), giving the grass fall colors (bottom left),
+    and applying both effects together (bottom right).</em></h3>
+    <font size="+2">
+          <p style="text-align: center;">
+            <!-- <a href="http://arxiv.org/abs/2303.13508" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp; -->
+            <a href="#video">[Video]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- <a href="#bib">[BibTeX]</a> -->
+          </p>
+    </font>
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Abstract</h2>
+  <p>Recently many techniques have emerged to create high quality 3D assets and scenes. When it comes to editing of these objects,
+     however, existing approaches are either slow, compromise on quality, or do not provide enough customization. We introduce a
+     novel approach to quickly edit a 3D model from a single reference view. Our technique first segments the edit image,
+     and then matches semantically corresponding regions across chosen segmented dataset views using DINO features. A color or
+     texture change from a particular region of the edit image can then be applied to other views automatically in a semantically
+     sensible manner. These edited views act as an updated dataset to further train and re-style the 3D scene. The end-result is
+     therefore an edited 3D model. Our framework enables a wide variety of editing tasks such as manual local edits, correspondence
+     based style transfer from any example image, and a combination of different styles from multiple example images.
+     We use Gaussian Splats as our primary 3D representation due to their speed and ease of local editing, but our technique works
+     for other methods such as NeRFs as well. We show through multiple examples that our method produces higher quality results
+     while offering fine grained control of editing.</p>
+</div>
+
+<div class="content">
+  <h2>Method</h2>
+  <img src="./iceg_files/train_flow.png" style="width: 100%"> <br>
+  <p> Image conditional editing is shown above, where an example image is segmented, and its parts are matched with the parts of each of the chosen and segmented dataset views.
+    After our DINO based mask matching algorithm assigns these pairings, color and/or texture can be transferred among those matching parts. Alternatively, users can choose
+    colors or textures to apply, as demonstrated in the user workflow below.</p>
+    <img src="./iceg_files/user_flow.png" style="width: 100%"> <br>
+</div>
+
+<div class="content">
+  <h2>Object Editing</h2>
+  <br>
+  <video style="width: 100%" autoplay muted loop>
+    <source src="./iceg_files/vids/drum_tree_ship_plate.mp4" type="video/mp4"> 
+  </video>
+  <br><p>We show correspondence based editing (left two images) and targeted editing (right two images).</p>
+  <br>
+  <video style="width: 100%" autoplay muted loop>
+    <source src="./iceg_files/vids/mic_and_chairs.mp4" type="video/mp4"> 
+  </video>
+  <br><p>Showing a variety of edits on mics and chairs.</p>
+ <br>
+</div>
+
+<div class="content">
+  <a id="video"><h2>Video Presentation</h2></a>
+  <br>
+  <iframe width="890" height="450" src="https://www.youtube.com/embed/dDsCwRXixp8?si=nwKktjYkX4I0bRYO">
+  </iframe>
+   <br>
+</div>
+
+<div class="content">
+  <h2>Editing Multiple Parts</h2>
+  <div class="row">
+    <div class="colum2">
+      <img src="./iceg_files/lego_on_table.png" style="width:100%;">
+      <p style="text-align: center;">Applying the blue color to the truck and grass texture to the dining table, with both combined at the bottom.</p>
+    </div>
+    <div class="colum2">
+      <img src="./iceg_files/bonsai.png" style="width:100%;">
+      <p style="text-align: center;">Applying various colors to the tablecloth.</p>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <h2>Changing Seasons</h2>
+  <div class="row">
+    <div class="colum2">
+      <img src="./iceg_files/bicycle_to_snow.png" style="width:100%;">
+      <p style="text-align: center;">Turning the bicycle scene to ice and snow.</p>
+    </div>
+    <div class="colum2">
+      <img src="./iceg_files/stump_to_fall.png" style="width:100%;">
+      <p style="text-align: center;">Making the vegetation fall colors.</p>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <h2>Color Comparison Results</h2><br>
+  <img src="./iceg_files/color_compare_table.png" style="width:100%;"><br>
+  <p style="text-align: center;">Comparing color editing across our method, Distilled Feature Fields, and CLIP-NeRF.</p>
+</div>
+
+<div class="content">
+  <h2>Texture Comparison Results</h2><br>
+  <img src="./iceg_files/texture_compare_table.png" style="width:100%;"><br>
+  <p style="text-align: center;">Comparing texture editing across our method, BlendedNeRF, and Vox-E.</p>
+</div>
+
+<div class="content">
+  <h2>Texturing Reflective Objects</h2><br>
+  <img src="./iceg_files/coffee_and_helmet.png" style="width:100%;"><br>
+  <p style="text-align: center;">Applying ice texture to the helmet, gold foil to the coffee cup, and toasted texture to the bread.</p>
+</div>
+
+</body>
+</html>
