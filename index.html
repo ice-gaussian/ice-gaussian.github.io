@@ -167,7 +167,7 @@ html {
 <div class="content">
   <h2>Method</h2>
   <img src="./iceg_files/train_flow.png" style="width: 100%"> <br>
-  <p> Image conditional editing is shown above, where an example image is segmented, and its parts are matched with the parts of each of the chosen and segmented dataset views.
+  <p style="font-size: 24px;"> Image conditional editing is shown above, where an example image is segmented, and its parts are matched with the parts of each of the chosen and segmented dataset views.
     After our DINO based mask matching algorithm assigns these pairings, color and/or texture can be transferred among those matching parts. Alternatively, users can choose
     colors or textures to apply, as demonstrated in the user workflow below.</p>
     <img src="./iceg_files/user_flow.png" style="width: 100%"> <br>
@@ -179,12 +179,17 @@ html {
   <video style="width: 100%" autoplay muted loop>
     <source src="./iceg_files/vids/drum_tree_ship_plate.mp4" type="video/mp4"> 
   </video>
-  <br><p>We show correspondence based editing (left two images) and targeted editing (right two images).</p>
+  <br><p style="font-size: 24px;">We show correspondence based editing on the left two examples where we can restyle the drums to match the conga drums color scheme,
+    and give the plant fall colors from the fall tree. Targeted editing is shown on the right two examples where sand texture is applied to the water and blue marble
+    texture is applied to the plate.</p>
   <br>
   <video style="width: 100%" autoplay muted loop>
     <source src="./iceg_files/vids/mic_and_chairs.mp4" type="video/mp4"> 
   </video>
-  <br><p>Showing a variety of edits on mics and chairs.</p>
+  <br><p style="font-size: 24px;">Showing a variety of edits on mics and chairs. In the top row we have the original mic and chair. In the mid-left, we turn the mic green,
+    in the bottom-left, we apply the texture of starry night to it. In the mid-right, we turn the chair back to a wood, and in the bottom-right we use correspondence
+    to automatically style the chair with the appearance of the throne.
+  </p>
  <br>
 </div>
 
@@ -201,11 +206,11 @@ html {
   <div class="row">
     <div class="colum2">
       <img src="./iceg_files/lego_on_table.png" style="width:100%;">
-      <p style="text-align: center;">Applying the blue color to the truck and grass texture to the dining table, with both combined at the bottom.</p>
+      <p style="font-size: 24px; text-align: center;">Applying the blue color to the truck and grass texture to the dining table, with both combined at the bottom.</p>
     </div>
     <div class="colum2">
       <img src="./iceg_files/bonsai.png" style="width:100%;">
-      <p style="text-align: center;">Applying various colors to the tablecloth.</p>
+      <p style=" font-size: 24px; text-align: center;">Applying various colors to the tablecloth.</p>
     </div>
   </div>
 </div>
@@ -215,11 +220,11 @@ html {
   <div class="row">
     <div class="colum2">
       <img src="./iceg_files/bicycle_to_snow.png" style="width:100%;">
-      <p style="text-align: center;">Turning the bicycle scene to ice and snow.</p>
+      <p style="font-size: 24px; text-align: center;">Turning grass in the bicycle scene to ice and snow.</p>
     </div>
     <div class="colum2">
       <img src="./iceg_files/stump_to_fall.png" style="width:100%;">
-      <p style="text-align: center;">Making the vegetation fall colors.</p>
+      <p style=" font-size: 24px; text-align: center;">Making the vegetation fall colors.</p>
     </div>
   </div>
 </div>
@@ -227,19 +232,19 @@ html {
 <div class="content">
   <h2>Color Comparison Results</h2><br>
   <img src="./iceg_files/color_compare_table.png" style="width:100%;"><br>
-  <p style="text-align: center;">Comparing color editing across our method, Distilled Feature Fields, and CLIP-NeRF.</p>
+  <p style="font-size: 24px; text-align: center;">Comparing color editing across our method, Distilled Feature Fields, and CLIP-NeRF.</p>
 </div>
 
 <div class="content">
   <h2>Texture Comparison Results</h2><br>
   <img src="./iceg_files/texture_compare_table.png" style="width:100%;"><br>
-  <p style="text-align: center;">Comparing texture editing across our method, BlendedNeRF, and Vox-E.</p>
+  <p style=" font-size: 24px; text-align: center;">Comparing texture editing across our method, Blended-NeRF, and Vox-E.</p>
 </div>
 
 <div class="content">
   <h2>Texturing Reflective Objects</h2><br>
   <img src="./iceg_files/coffee_and_helmet.png" style="width:100%;"><br>
-  <p style="text-align: center;">Applying ice texture to the helmet, gold foil to the coffee cup, and toasted texture to the bread.</p>
+  <p style="font-size: 24px; text-align: center;">Applying ice texture to the helmet, gold foil to the coffee cup, and toasted texture to the bread.</p>
 </div>
 
 </body>
